@@ -1,0 +1,266 @@
+// Custom.scss
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: 400;
+  font: inherit;
+  font-family: "Montserrat";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.42857;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 14px;
+  @media (min-width: 1366px) {
+    font-size: 16px;
+  }
+}
+
+strong {
+  font-weight: 700 !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  border: none;
+  outline: none;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+}
+p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.font-weight-bold {
+  font-weight: 600 !important;
+}
+.bg-norepeat {
+  background-repeat: no-repeat;
+}
+
+.bg-brand {
+  // background-color: $brand-color;
+  // color: $brand-color-inverse;
+
+  @include bg-brand;
+}
+
+.bg-gray {
+  background-color: $bg-gray !important;
+}
+
+.bg-cover {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+
+.bg-h-100 {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: auto 100% !important;
+}
+
+.bg-white {
+  background: $bg-white !important;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-blue {
+  background-color: #003247;
+  color: #fff;
+}
+
+.align-bottom-right {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.list-vertical {
+  li {
+    padding: 0.5rem 0;
+  }
+}
+
+.iframe-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.svg {
+  fill: currentColor;
+}
+
+.offcanvas-blog-search {
+  z-index: 1;
+  border: none;
+  height: 100vh;
+  background-color: lighten($bg-brand, 40);
+}
+
+.blog-search {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  padding-top: 10rem;
+
+  text-align: center;
+  h3 {
+    font-weight: 700;
+    font-size: clamp(4rem, 2vw, 6rem);
+  }
+}
+.form-blog-search {
+  display: flex;
+  border-radius: 6px;
+  border: solid 2px #000;
+  &-input {
+    flex: 1;
+    height: 50px;
+    padding: 0 1rem;
+    border: none;
+    background-color: transparent;
+  }
+  &-btn {
+    padding: 0 20px;
+    border: none;
+    height: 100%;
+    background-color: transparent;
+  }
+}
+.suggested-area {
+  margin-top: 6rem;
+  .suggested {
+    color: $txt-gray;
+  }
+}

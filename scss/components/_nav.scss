@@ -1,0 +1,529 @@
+.nav {
+    display: flex;
+    padding: 0 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+    &.nav--block {
+        display: block !important;
+        padding: 1rem 0;
+    }
+}
+
+.nav .nav__item {
+    display: block;
+    &.logout {
+        border-top: $border;
+    }
+}
+
+.nav .nav__item>.nav__link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .55rem 1.75rem;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+.nav .nav__item>.nav__link .nav__link-text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.nav .nav__item>.nav__link .nav__link-icon {
+    flex: 0 0 18px;
+    font-size: 1.25rem;
+    line-height: 0;
+    margin-right: 10px;
+}
+
+.nav .nav__item>.nav__link .nav__link-icon:before {
+    line-height: 0
+}
+
+.nav .nav__item>.nav__link .nav__link-icon g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease;
+    fill: #a2a5b9
+}
+
+.nav .nav__item>.nav__link .nav__link-icon:hover g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease
+}
+
+.nav .nav__item>.nav__link .nav__link-bullet {
+    text-align: center;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 10px;
+    flex: 0 0 10px;
+    margin-right: 10px
+}
+
+.nav .nav__item>.nav__link .nav__link-bullet>span {
+    vertical-align: middle;
+    display: inline-block
+}
+
+.nav .nav__item>.nav__link .nav__link-bullet.nav__link-bullet--dot>span {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%
+}
+
+.nav .nav__item>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    width: 8px;
+    height: 2px;
+    border-radius: 2px
+}
+
+.nav .nav__item>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav .nav__item>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: #a2a5b9
+}
+
+.nav .nav__item>.nav__link .nav__link-badge {
+    padding: 0 0 0 5px
+}
+
+.nav .nav__item>.nav__link .nav__link-arrow {
+    text-align: right;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20px;
+    flex: 0 0 20px;
+    font-size: .8rem;
+    color: #a2a5b9;
+    font-family: LineAwesome;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.nav .nav__item>.nav__link .nav__link-arrow:before {
+    content: ""
+}
+
+.nav .nav__item>.nav__link .nav__link-arrow:before {
+    display: inline-block;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.nav .nav__item>.nav__link.collapsed .nav__link-arrow {
+    font-family: LineAwesome;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+}
+
+.nav .nav__item>.nav__link.collapsed .nav__link-arrow:before {
+    content: ""
+}
+
+.nav .nav__item>.nav__link.collapsed .nav__link-arrow:before {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.nav .nav__item>.nav__sub {
+    padding: 0;
+    margin: 0
+}
+
+.nav .nav__item>.nav__sub .nav__item>.nav__link {
+    padding: .5rem 1.5rem .5rem 2.5rem
+}
+
+.nav .nav__item.nav__item--last {
+    padding-bottom: 0
+}
+
+.nav .nav__item.active>.nav__link,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link {
+    background-color: #f7f8fa;
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+.nav .nav__item.active>.nav__link .nav__link-arrow,
+.nav .nav__item.active>.nav__link .nav__link-icon,
+.nav .nav__item.active>.nav__link .nav__link-text,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-arrow,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-icon,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav .nav__item.active>.nav__link .nav__link-icon g [fill],
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-icon g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease;
+    fill: $brand-color
+}
+
+.nav .nav__item.active>.nav__link .nav__link-icon:hover g [fill],
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-icon:hover g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease
+}
+
+.nav .nav__item.active>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav .nav__item.active>.nav__link .nav__link-bullet.nav__link-bullet--line>span,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub)>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: $brand-color
+}
+
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed {
+    background-color: #f7f8fa;
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed .nav__link-arrow,
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed .nav__link-icon,
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed .nav__link-text {
+    color: $brand-color
+}
+
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed .nav__link-bullet.nav__link-bullet--dot>span,
+.nav .nav__item:hover:not(.nav__item--disabled).nav__item--sub>.nav__link.collapsed .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: $brand-color
+}
+
+.nav .nav__item.nav__item--disabled {
+    opacity: .6
+}
+
+.nav .nav__custom {
+    padding: .55rem 1.75rem
+}
+
+.nav .nav__section {
+    margin-top: 1rem;
+    padding: 0 1.75rem
+}
+
+.nav .nav__section .nav__section-icon {
+    color: #a2a5b9
+}
+
+.nav .nav__section.nav__section--first {
+    margin-top: .5rem
+}
+
+.nav .nav__section .nav__section-text {
+    color: $brand-color;
+    font-weight: 600;
+    font-size: .9rem;
+    text-transform: uppercase
+}
+
+.nav .nav__separator {
+    margin: .7rem 0;
+    height: 0;
+    display: block;
+    border-bottom: 1px solid #ebedf2
+}
+
+.nav .nav__separator.nav__separator--dashed {
+    border-bottom: 1px dashed #ebedf2
+}
+
+.nav .nav__foot,
+.nav .nav__head {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #595d6e;
+    font-weight: 500;
+    padding: .55rem 1.75rem
+}
+
+.nav .nav__foot>i,
+.nav .nav__head>i {
+    font-size: 1.2rem;
+    color: $brand-color;
+}
+
+.nav .nav__head {
+    font-size: 1.1rem
+}
+
+.nav.nav--fit {
+    padding: 0
+}
+
+.nav.nav--fit .nav__item>.nav__link {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.nav.nav--lg-space .nav__item {
+    margin: .35rem 0
+}
+
+.nav.nav--lg-space .nav__item .nav__link {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+}
+
+.nav.nav--lg-space .nav__item:first-child {
+    margin-top: 0
+}
+
+.nav.nav--lg-space .nav__item:last-child {
+    margin-bottom: 0
+}
+
+.nav.nav--md-space .nav__item {
+    margin: .25rem 0
+}
+
+.nav.nav--md-space .nav__item .nav__link {
+    padding-top: .75rem;
+    padding-bottom: .75rem
+}
+
+.nav.nav--md-space .nav__item:first-child {
+    margin-top: 0
+}
+
+.nav.nav--md-space .nav__item:last-child {
+    margin-bottom: 0
+}
+
+.nav.nav--bold .nav__item .nav__link .nav__link-text {
+    font-weight: 500
+}
+
+.nav.nav--thin .nav__item .nav__link .nav__link-text {
+    font-weight: 300
+}
+
+.nav.nav--lg-font .nav__item .nav__link .nav__link-text {
+    font-size: 1.15rem
+}
+
+.nav.nav--xl-font .nav__item .nav__link .nav__link-text {
+    font-size: 1.25rem
+}
+
+.nav.nav--v2 .nav__item {
+    border-radius: 2rem;
+    overflow: hidden
+}
+
+.nav.nav--v2 .nav__item>.nav__link {
+    -webkit-transition: none;
+    transition: none
+}
+
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link {
+    background-color: #f4f4f9;
+    -webkit-transition: none;
+    transition: none
+}
+
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-arrow,
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-icon,
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav.nav--v2 .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: #f4f4f9
+}
+
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link {
+    background-color: $brand-color;
+    -webkit-transition: none;
+    transition: none
+}
+
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link .nav__link-arrow,
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link .nav__link-icon,
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link .nav__link-text {
+    color: #fff
+}
+
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav.nav--v2 .nav__item.nav__item--active>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: #fff
+}
+
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link {
+    background-color: $brand-color
+}
+
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link .nav__link-arrow,
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link .nav__link-icon,
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link .nav__link-text {
+    color: #fff
+}
+
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link .nav__link-bullet.nav__link-bullet--dot>span,
+.nav.nav--v2 .nav__item.nav__item--active:hover>.nav__link .nav__link-bullet.nav__link-bullet--line>span {
+    background-color: #fff
+}
+
+.nav.nav--v3 .nav__item {
+    margin: 0
+}
+
+.nav.nav--v3 .nav__item .nav__link {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-left: 2px solid transparent
+}
+
+.nav.nav--v3 .nav__item.active .nav__link,
+.nav.nav--v3 .nav__item.nav__link--active .nav__link {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    background-color: #f7f8fa;
+    border-left: 2px solid $brand-color
+}
+
+.nav.nav--v3 .nav__item.active .nav__link .nav__link-text,
+.nav.nav--v3 .nav__item.nav__link--active .nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav.nav--v3 .nav__item:hover {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    background-color: #f7f8fa
+}
+
+.nav.nav--v3 .nav__item:hover .nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav.nav--v4 .nav__item {
+    padding: .65rem 0
+}
+
+.nav.nav--v4 .nav__item .nav__link {
+    background-color: transparent;
+    margin-left: 3px;
+    color: #9492a1;
+    font-size: 1.2rem;
+    padding: 0 1.1rem
+}
+
+.nav.nav--v4 .nav__item .nav__link .nav__link-text {
+    color: #9492a1;
+    font-size: 1.2rem
+}
+
+.nav.nav--v4 .nav__item.active .nav__link {
+    border-left: 3px solid $brand-color;
+    color: #48465b;
+    margin-left: 0
+}
+
+.nav.nav--v4 .nav__item.active .nav__link .nav__link-text {
+    color: #48465b
+}
+
+.nav.nav--v4 .nav__item:first-child {
+    margin-top: -.65rem
+}
+
+.nav.nav--v4 .nav__item:hover {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    background-color: #f7f8fa
+}
+
+.nav.nav--v4 .nav__item:hover .nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav.nav--v4--brand .nav__item.active .nav__link {
+    border-left: 3px solid $brand-color
+}
+
+.nav.nav--v4--brand .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $brand-color
+}
+
+.nav.nav--v4--light .nav__item.active .nav__link {
+    border-left: 3px solid #fff
+}
+
+.nav.nav--v4--light .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: #fff
+}
+
+.nav.nav--v4--dark .nav__item.active .nav__link {
+    border-left: 3px solid $body-color
+}
+
+.nav.nav--v4--dark .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $body-color
+}
+
+.nav.nav--v4--primary .nav__item.active .nav__link {
+    border-left: 3px solid $primary-color
+}
+
+.nav.nav--v4--primary .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $primary-color
+}
+
+.nav.nav--v4--success .nav__item.active .nav__link {
+    border-left: 3px solid $success-color
+}
+
+.nav.nav--v4--success .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $success-color
+}
+
+.nav.nav--v4--info .nav__item.active .nav__link {
+    border-left: 3px solid $info-color
+}
+
+.nav.nav--v4--info .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $info-color
+}
+
+.nav.nav--v4--warning .nav__item.active .nav__link {
+    border-left: 3px solid $warning-color
+}
+
+.nav.nav--v4--warning .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $warning-color
+}
+
+.nav.nav--v4--danger .nav__item.active .nav__link {
+    border-left: 3px solid $danger-color
+}
+
+.nav.nav--v4--danger .nav__item:hover:not(.nav__item--disabled):not(.nav__item--sub):not(.nav__item--active)>.nav__link .nav__link-text {
+    color: $danger-color
+}

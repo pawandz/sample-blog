@@ -1,0 +1,83 @@
+.footer {
+  background: #000000;
+  color: #fff;
+  padding-bottom: 1rem !important;
+  &-cta {
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: solid 1px #292929;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      text-align: center;
+    }
+    h3 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 0;
+      flex: 1;
+      @include media-breakpoint-down(sm) {
+        padding-bottom: 1.2rem;
+      }
+    }
+  }
+
+  .copyrights {
+    padding: 3rem 0;
+    @include media-breakpoint-down(sm) {
+      padding: 1rem 0;
+    }
+    &-txt {
+      font-size: 0.8rem;
+    }
+  }
+  .contact-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include media-breakpoint-down(sm) {
+      justify-content: center;
+    }
+    li {
+      a {
+        color: currentColor;
+        font-size: 1rem;
+        position: relative;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        display: block;
+        transition: all 0.4s ease;
+        overflow: hidden;
+        span {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -15px;
+          margin-top: -15px;
+          height: 30px;
+          width: 30px;
+          line-height: 30px;
+          display: block;
+          -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+  .contact-social li a:hover .icon-1 {
+    top: -15px;
+  }
+  .contact-social li a .icon-2 {
+    top: 50px;
+  }
+  .contact-social li a:hover .icon-2 {
+    top: 15px;
+  }
+  .contact-social li a:hover {
+    color: currentColor;
+  }
+}

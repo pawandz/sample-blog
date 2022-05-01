@@ -1,0 +1,334 @@
+// Note: we use Autoprefixer to add vendor prefixes to our CSS -> https://github.com/postcss/autoprefixer
+@import "../partials/variables"; // colors, fonts etc...
+@import "../partials/mixins"; // custom mixins
+@import "../partials/layout"; // responsive grid and media queries
+
+/* -------------------------------- 
+
+ Header
+
+-------------------------------- */
+
+.cd-morph-dropdown {
+  // position: relative;
+  // height: 60px;
+  // background-color: $color-3;
+  margin: 0 auto;
+  &::before {
+    /* never visible - used in JS to check mq */
+    content: "mobile";
+    display: none;
+  }
+  .nav-trigger {
+    /* menu icon - visible on small screens only */
+    position: absolute;
+    top: -2px;
+    #{$end-direction}: 120px;
+    height: 48px;
+    width: 50px;
+    /* replace text with icon */
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+    span,
+    span::after,
+    span::before {
+      /* these are the 3 lines of the menu icon */
+      position: absolute;
+      background-color: $color-1;
+      height: 3px;
+      width: 26px;
+    }
+    span {
+      @include center;
+      transition: background-color 0.3s;
+    }
+    span::after,
+    span::before {
+      content: "";
+      left: 0;
+      transition: transform 0.3s;
+    }
+    span::before {
+      transform: translateY(-9px);
+    }
+    span::after {
+      transform: translateY(9px);
+    }
+  }
+  &.nav-open .nav-trigger span {
+    background-color: transparent;
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+  .main-nav {
+    display: none;
+  }
+  .morph-dropdown-wrapper {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1.2em 5%;
+    box-shadow: inset 0 1px 0 shade($color-3, 10%);
+    box-shadow: 0 0px 10px rgba(#000, 0.09);
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  &.nav-open .morph-dropdown-wrapper {
+    display: block;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .dropdown-list > ul > li {
+    margin-bottom: 3.3em;
+  }
+  .label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $txt-body;
+    margin-bottom: 0.8em;
+  }
+  .content li {
+    @include clearfix;
+  }
+  .content h2 {
+    color: shade($color-3, 35%);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 20px 0 10px 14px;
+  }
+  @include MQ(L) {
+    // position: absolute;
+    // height: 80px;
+    // left: 0;
+    // top: 0;
+    // width: 100%;
+    // padding: 0;
+    // text-align: center;
+    // background-color: transparent;
+    &::before {
+      content: "desktop";
+    }
+    .nav-trigger {
+      display: none;
+    }
+    .main-nav {
+      display: inline-block;
+    }
+    .main-nav > ul > li {
+      display: inline-block;
+      float: left;
+    }
+    .main-nav > ul > li > a {
+      display: block;
+      padding: 0 1.8em;
+      height: 50px;
+      line-height: 50px;
+      color: $txt-body;
+      font-weight: 500;
+      //font-size: 1rem;
+      @include font-smoothing;
+      transition: opacity 0.2s;
+    }
+    &.is-dropdown-visible .main-nav > ul > li > a {
+      /* main navigation hover effect - on hover, reduce opacity of elements not hovered over */
+      opacity: 0.6;
+    }
+    &.is-dropdown-visible .main-nav > ul > li.active > a {
+      opacity: 1;
+    }
+    .morph-dropdown-wrapper {
+      /* dropdown wrapper - used to create the slide up/slide down effect when dropdown is revealed/hidden */
+      display: block;
+      top: 60px;
+      /* overwrite mobile style */
+      width: auto;
+      padding: 0;
+      box-shadow: none;
+      background-color: transparent;
+      /* Force Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+    &.is-dropdown-visible .morph-dropdown-wrapper {
+      transform: translateY(0);
+    }
+    .dropdown-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      transform: translateZ(0);
+      will-change: transform, width, height;
+      transition: visibility 0.3s;
+      box-shadow: 0 0px 10px rgba(#000, 0.2);
+      background-color: #fff;
+      border-radius: 8px;
+      .no-csstransitions & {
+        display: none;
+      }
+      &::before {
+        /* dropdown top triangle */
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        @include center(x);
+        height: 0;
+        width: 0;
+        border: 8px solid transparent;
+        border-bottom-color: $color-3;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      > ul {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+    &.is-dropdown-visible .dropdown-list {
+      visibility: visible;
+      transition: transform 0.3s, width 0.3s, height 0.3s;
+      &::before {
+        opacity: 1;
+      }
+    }
+    .dropdown {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      visibility: hidden;
+      width: 100%;
+      transition: opacity 0.3s, visibility 0.3s;
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      &.move-left .content {
+        transform: translateX(-100px);
+      }
+      &.move-right .content {
+        transform: translateX(100px);
+      }
+    }
+    .label {
+      /* hide the label on bigger devices */
+      display: none;
+    }
+    .content {
+      padding: 2.2rem 1.8rem;
+      transition: transform 0.3s;
+      text-align: left;
+      h5 {
+        font-weight: 600;
+        color: $txt-gray;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+    }
+    .services .content {
+      /* you need to set a width for the .content elements because they have a position absolute */
+      width: 850px;
+    }
+    .company .content {
+      width: 400px;
+    }
+    .resources .content {
+      width: 300px;
+    }
+    .bg-layer {
+      /* morph dropdown background */
+      position: absolute;
+      top: 12px;
+      left: 0;
+      height: 1px;
+      width: 1px;
+      background: $color-3;
+      opacity: 0;
+      transition: opacity 0.3s;
+      transform-origin: top left;
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      display: none;
+    }
+    &.is-dropdown-visible .bg-layer {
+      opacity: 1;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+  }
+}
+
+/* -------------------------------- 
+
+Main site content
+
+-------------------------------- */
+
+.cd-main-content {
+  min-height: 100vh;
+  background-color: $color-4;
+  @include MQ(L) {
+    padding-top: 80px;
+  }
+}
+
+.dropdown_layout {
+  display: flex;
+  flex-wrap: wrap;
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+  }
+  &_col {
+    // max-width: 33%;
+    flex: 1;
+    @include media-breakpoint-down(md) {
+      max-width: inherit;
+      flex: auto;
+      margin-bottom: 1rem;
+      h5 {
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.links {
+  > li {
+    margin: 1.5rem 0;
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      color: $txt-gray;
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+  .icn {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-#{$end-direction}: 10px;
+    .svg {
+      width: inherit;
+      height: inherit;
+    }
+  }
+}

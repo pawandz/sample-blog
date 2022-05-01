@@ -1,0 +1,222 @@
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+$spacer: 1rem;
+$spacers: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 0.25,
+    ),
+    2: (
+      $spacer * 0.5,
+    ),
+    3: $spacer,
+    4: (
+      $spacer * 1.5,
+    ),
+    5: (
+      $spacer * 2,
+    ),
+    6: (
+      $spacer * 2.5,
+    ),
+    7: (
+      $spacer * 3,
+    ),
+    8: (
+      $spacer * 3.5,
+    ),
+    9: (
+      $spacer * 4,
+    ),
+    10: (
+      $spacer * 4.5,
+    ),
+    11: (
+      $spacer * 5,
+    ),
+    12: (
+      $spacer * 5.5,
+    ),
+    13: (
+      $spacer * 6,
+    ),
+    14: (
+      $spacer * 6.5,
+    ),
+    15: (
+      $spacer * 7,
+    ),
+    16: (
+      $spacer * 7.5,
+    ),
+    17: (
+      $spacer * 8,
+    ),
+    18: (
+      $spacer * 8.5,
+    ),
+    19: (
+      $spacer * 9,
+    ),
+    20: (
+      $spacer * 9.5,
+    ),
+  ),
+  $spacers
+);
+
+//Colors
+$primary: #29abe2;
+$brand-color: #29abe2;
+$brand-color-inverse: #fff;
+$primary-color: $brand-color;
+$primary-color-inverse: $brand-color-inverse;
+$secondary-color: #11395e;
+$secondary-color-inverse: #fff;
+$third-color: #474747;
+$third-color-inverse: #fff;
+//Do not change
+$body-color: #000000;
+$txt-body: #000000;
+$txt-gray: rgb(20, 20, 20);
+//backgrounds
+$bg-brand: $brand-color;
+$bg-white: #fff;
+$bg-white-inverse: #000;
+$bg-black: #000;
+$bg-black-inverse: #fff;
+$bg-gray: #f4f5fa;
+$bg-gray-light: #f4f5fa;
+///border
+$border-color: #ced9e2;
+$border: solid 1px $border-color;
+$border-transparent: solid 1px transparent;
+//radius
+$radius4: 4px;
+$radius3: 3px;
+$radius2: 2px;
+$radius1: 1px;
+//shadow
+$shadow1: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//status
+$success-color: #1dc9b7;
+$warning-color: #ffb822;
+$info-color: #5578eb;
+$danger-color: #fd397a;
+
+//radius
+$radius-common: 3px;
+$radius4: 4px;
+$radius3: 3px;
+$radius2: 2px;
+$radius1: 1px;
+//messages
+$success-color: #1dc9b7;
+$warning-color: #ffb822;
+$info-color: #5578eb;
+$danger-color: #fd397a;
+
+//Bg brand
+@mixin bg-brand {
+  background-color: $brand-color;
+  color: lighten($brand-color, 55%);
+}
+//Push auto
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+//Pseudo
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+//Responsive ratio
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// img absolute
+@mixin img-absolute {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+//Truncate
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin placeholder {
+  animation: placeholderShimmer 2s linear;
+  animation-iteration-count: infinite;
+  background-color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(0, 0, 0, 0.08)),
+    color-stop(15%, rgba(0, 0, 0, 0.15)),
+    color-stop(30%, rgba(0, 0, 0, 0.08))
+  );
+  background-image: -webkit-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0.08) 0,
+    rgba(0, 0, 0, 0.15) 15%,
+    rgba(0, 0, 0, 0.08) 30%
+  );
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.08) 0,
+    rgba(0, 0, 0, 0.15) 15%,
+    rgba(0, 0, 0, 0.08) 30%
+  );
+  background-size: 1200px 100%;
+}
+
+@-webkit-keyframes placeholderShimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
